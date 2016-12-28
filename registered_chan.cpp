@@ -25,7 +25,7 @@ class CRegisteredChanMod : public CModule {
 
     void OnRawMode(const CNick& OpNick, CChan& Channel, const CString& sModes, const CString& sArgs) override {
         CIRCNetwork* pNetwork = Channel.GetNetwork();
-        if (sModes.Contains("-z") && OpNick.GetNick().Equals("ChanServ")) {
+        if (sModes.Contains("-z")) {
             pNetwork->PutIRC("PART " + Channel.GetName());
             pNetwork->DelChan(Channel.GetName());
         }
