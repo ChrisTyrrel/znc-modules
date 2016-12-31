@@ -27,7 +27,12 @@ class CRegisteredChanMod : public CModule {
         CIRCNetwork* pNetwork = Channel.GetNetwork();
         if (sModes.Contains("-z")) {
             pNetwork->PutIRC("PART " + Channel.GetName());
-            pNetwork->DelChan(Channel.GetName());
+            DEBUG("Channel successfully parted.");
+            /*if (pNetwork->DelChan(Channel.GetName())) {
+               PutModule(Channel.GetName() + " removed due to removal of registration mode."); 
+            } else {
+               PutModule(Channel.GetName() + " could not be removed.");                 
+            }*/
         }
     }
 };
